@@ -1,0 +1,16 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "iPages",
+        "repositoryURL": "https://github.com/benjaminsage/iPages.git",
+        "state": {
+          "branch": null,
+          "revision": "f57e3cba2cf4bd0a689236254cde361e54315720",
+          "version": "0.0.13"
+        }
+      }
+    ]
+  },
+  "version": 1
+}
