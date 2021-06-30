@@ -25,8 +25,9 @@ struct Clock: View {
     func tick(at tick: Int) -> some View {
         VStack(spacing: 3) {
             Rectangle()
-                .fill(Color.primary)
-                .opacity(tick % 10 == 0 ? 1 : 0.4)
+                .rotation(Angle.degrees(1))
+                .rotation(Angle.degrees(-1))
+                .fill(tick % 10 == 0 ? Color.primary : Color.secondary, style: FillStyle(antialiased: true))
                 .frame(width: 2, height: tick % 2 == 0 ? 15 : 7)
             if tick % 30 == 0 {
                 Text(tick == 0 ? "60" : String(tick/2))
