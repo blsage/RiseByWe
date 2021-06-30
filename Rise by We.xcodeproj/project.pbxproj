@@ -11,7 +11,6 @@
 		283B31F426844DF5008D4163 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 283B31F326844DF5008D4163 /* ContentView.swift */; };
 		283B31F626844DF8008D4163 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 283B31F526844DF8008D4163 /* Assets.xcassets */; };
 		283B31F926844DF8008D4163 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 283B31F826844DF8008D4163 /* Preview Assets.xcassets */; };
-		283B32022684536C008D4163 /* iPages in Frameworks */ = {isa = PBXBuildFile; productRef = 283B32012684536C008D4163 /* iPages */; };
 		283B32042684560A008D4163 /* ExerciseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 283B32032684560A008D4163 /* ExerciseModel.swift */; };
 		2883EABA2686D435003E4E2B /* Exercise.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2883EAB92686D435003E4E2B /* Exercise.swift */; };
 		28DD3375268C22C600442A73 /* ClockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28DD3374268C22C600442A73 /* ClockView.swift */; };
@@ -34,7 +33,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				283B32022684536C008D4163 /* iPages in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -97,7 +95,6 @@
 			);
 			name = "Rise by We";
 			packageProductDependencies = (
-				283B32012684536C008D4163 /* iPages */,
 			);
 			productName = "Rise by We";
 			productReference = 283B31EE26844DF5008D4163 /* Rise by We.app */;
@@ -289,7 +286,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"Rise by We/Preview Content\"";
-				DEVELOPMENT_TEAM = GA42SWSGPU;
+				DEVELOPMENT_TEAM = 3ZP49UXLEW;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = "Rise by We/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -311,7 +308,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"Rise by We/Preview Content\"";
-				DEVELOPMENT_TEAM = GA42SWSGPU;
+				DEVELOPMENT_TEAM = 3ZP49UXLEW;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = "Rise by We/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -359,14 +356,6 @@
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		283B32012684536C008D4163 /* iPages */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 283B32002684536C008D4163 /* XCRemoteSwiftPackageReference "iPages" */;
-			productName = iPages;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 283B31E626844DF5008D4163 /* Project object */;
 }
