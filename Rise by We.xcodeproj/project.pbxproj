@@ -14,6 +14,7 @@
 		283B32022684536C008D4163 /* iPages in Frameworks */ = {isa = PBXBuildFile; productRef = 283B32012684536C008D4163 /* iPages */; };
 		283B32042684560A008D4163 /* ExerciseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 283B32032684560A008D4163 /* ExerciseModel.swift */; };
 		2883EABA2686D435003E4E2B /* Exercise.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2883EAB92686D435003E4E2B /* Exercise.swift */; };
+		28DD3375268C22C600442A73 /* ClockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28DD3374268C22C600442A73 /* ClockView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +26,7 @@
 		283B31FA26844DF8008D4163 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		283B32032684560A008D4163 /* ExerciseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseModel.swift; sourceTree = "<group>"; };
 		2883EAB92686D435003E4E2B /* Exercise.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Exercise.swift; sourceTree = "<group>"; };
+		28DD3374268C22C600442A73 /* ClockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClockView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +62,7 @@
 			children = (
 				283B31F126844DF5008D4163 /* Rise_by_WeApp.swift */,
 				283B31F326844DF5008D4163 /* ContentView.swift */,
+				28DD3374268C22C600442A73 /* ClockView.swift */,
 				283B31F526844DF8008D4163 /* Assets.xcassets */,
 				283B31FA26844DF8008D4163 /* Info.plist */,
 				283B31F726844DF8008D4163 /* Preview Content */,
@@ -153,6 +156,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				283B31F426844DF5008D4163 /* ContentView.swift in Sources */,
+				28DD3375268C22C600442A73 /* ClockView.swift in Sources */,
 				2883EABA2686D435003E4E2B /* Exercise.swift in Sources */,
 				283B32042684560A008D4163 /* ExerciseModel.swift in Sources */,
 				283B31F226844DF5008D4163 /* Rise_by_WeApp.swift in Sources */,

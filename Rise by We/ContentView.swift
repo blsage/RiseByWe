@@ -20,31 +20,42 @@ struct ContentView: View {
     
     var body: some View {
         NavigationView {
-            TabView {
-                VStack {
-                    LiftCard(exercise: $liftModel.exercises[0])
-                    LiftCard(exercise: $liftModel.exercises[1])
+            VStack(spacing: 0) {
+                ClockView()
+                    .frame(width: 170, height: 170)
+                    .padding()
+                
+                TabView {
+                    VStack(spacing: 0) {
+                        SupersetView(exercise1: liftModel.exercises[0] as! WeightedExercise,
+                                     exercise2: liftModel.exercises[1] as! WeightedExercise)
+                        LiftCard(exercise: $liftModel.exercises[0])
+                        LiftCard(exercise: $liftModel.exercises[1])
+                    }
+                    VStack(spacing: 0) {
+                        PlatesView(exercise: liftModel.exercises[2] as! WeightedExercise)
+                        LiftCard(exercise: $liftModel.exercises[2])
+                        LiftCard(exercise: $liftModel.exercises[3])
+                    }
+                    VStack(spacing: 0) {
+                        PlatesView(exercise: liftModel.exercises[4] as! WeightedExercise)
+                        LiftCard(exercise: $liftModel.exercises[4])
+                        PlatesView(exercise: liftModel.exercises[5] as! WeightedExercise)
+                        LiftCard(exercise: $liftModel.exercises[5])
+                    }
                 }
-                VStack {
-                    LiftCard(exercise: $liftModel.exercises[2])
-                    LiftCard(exercise: $liftModel.exercises[3])
+                .tabViewStyle(PageTabViewStyle())
+                .sheet(isPresented: $showDataPopup) {
+                    RecapView()
+                        .accentColor(.orange)
                 }
-                VStack {
-                    LiftCard(exercise: $liftModel.exercises[4])
-                    LiftCard(exercise: $liftModel.exercises[5])
-                }
+                .navigationTitle(date)
+                .navigationBarItems(trailing: Button {
+                    showDataPopup = true
+                } label: {
+                    Image(systemName: "info.circle")
+                })
             }
-            .tabViewStyle(PageTabViewStyle())
-            .indexViewStyle(PageIndexViewStyle(backgroundDisplayMode: .always))
-            .sheet(isPresented: $showDataPopup) {
-                RecapView()
-            }
-            .navigationTitle(date)
-            .navigationBarItems(trailing: Button {
-                showDataPopup = true
-            } label: {
-                Image(systemName: "info.circle")
-            })
         }
     }
 }
@@ -56,7 +67,7 @@ struct LiftCard: View {
         if !exercise.justUpdated {
             VStack {
                 Text(exercise.name)
-                    .font(.title.smallCaps())
+                    .font(.largeTitle.smallCaps())
                 Text("\(exercise.levelString)")
                     .fontWeight(.bold)
                     .font(.system(size: 45, design: .rounded))
@@ -77,7 +88,7 @@ struct LiftCard: View {
                     }
                 }
             }
-            .padding()
+            .padding([.horizontal, .bottom])
         } else {
             VStack {
                 HStack {
@@ -93,6 +104,18 @@ struct LiftCard: View {
                 }
                 Button("Undo") { exercise.undo() }
             }
+        }
+    }
+}
+
+struct SupersetStack: View {
+    @Binding var exercise1: Exercise
+    @Binding var exercise2: Exercise
+    
+    var body: some View {
+        VStack {
+            LiftCard(exercise: $exercise1)
+            LiftCard(exercise: $exercise2)
         }
     }
 }
@@ -115,9 +138,50 @@ struct RecapView: View {
     }
 }
 
+struct PlatesView: View {
+    var exercise: WeightedExercise
+    
+    var platesText: String {
+        let plates = WeightedExercise.calculatePlates(fromWeight: exercise.weight)
+        return plates.map { String(format: "%g", $0) }.joined(separator: ", ")
+    }
+    
+    var body: some View {
+        Text(platesText)
+            .foregroundColor(.secondary)
+            .font(.callout)
+            .padding(.top)
+    }
+}
+
+struct SupersetView: View {
+    var exercise1: WeightedExercise
+    var exercise2: WeightedExercise
+    
+    var weightText: String {
+        let (base, additionalWeight, firstLighter) = WeightedExercise.calculateSupersetPlates(fromWeight: exercise1.weight, and: exercise2.weight)
+        
+        let firstString = base.isEmpty ? "0" : base.map { String(format: "%g", $0) }.joined(separator: ", ")
+        let secondString = additionalWeight.isEmpty ? "0" : additionalWeight.map { String(format: "%g", $0) }.joined(separator: ", ")
+        
+        if firstLighter {
+            return firstString + ", then add " + secondString + "."
+        } else {
+            return firstString + ". Add " + secondString + ", then remove."
+        }
+    }
+    
+    var body: some View {
+        Text(weightText)
+            .font(.callout)
+            .foregroundColor(.secondary)
+            .padding(.bottom)
+    }
+}
+
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        RecapView()
+        ContentView()
             .environmentObject(ExerciseModel())
     }
 }

@@ -94,6 +94,7 @@ struct BodyweightExercise: Codable, Exercise {
         let last3 = reps.suffix(3)
         let sameWeights = Set(last3.map { $0.reps }).count == 1
         let allMissed = last3.map { $0.hit } == [false, false, false]
+        
         return sameWeights && allMissed
     }
     
@@ -121,6 +122,7 @@ struct BodyweightExercise: Codable, Exercise {
 
 struct WeightedExercise: Encodable, Exercise {
     static var type = ExerciseType.weighted
+    static let plates = [2.5, 5, 10, 25, 35, 45]
         
     var name: String
     
@@ -171,10 +173,42 @@ struct WeightedExercise: Encodable, Exercise {
         weights.map { $0.hit ? String($0.pounds) : "X" }.joined(separator: " ")
     }
     
+    var weight: Int { currentWeight }
+    
     mutating func update(hit: Bool) {
         weights.append(Weight(pounds: currentWeight, hit: hit, date: Date()))
     }
     mutating func undo() {
         weights.removeLast()
+    }
+    
+    static func calculatePlates(fromWeight weight: Int) -> [Double] {
+        let additionalWeight = weight - 45
+        let eachSide = Double(additionalWeight) / 2
+        
+        var remainingWeight = eachSide
+        var plates: [Double] = []
+        
+        while remainingWeight > 0 {
+            let plate = Self.plates.reduce(0) { result, double in
+                double > remainingWeight ? result : double
+            }
+            plates.append(plate)
+            remainingWeight -= plate
+        }
+        
+        return plates
+    }
+    
+    static func calculateSupersetPlates(fromWeight weight1: Int, and weight2: Int) -> ([Double], [Double], Bool) {
+        let firstLighter = weight1 < weight2
+        
+        let smaller = min(weight1, weight2)
+        let larger = max(weight1, weight2)
+        let base = Self.calculatePlates(fromWeight: smaller)
+        
+        let additionalWeight = Self.calculatePlates(fromWeight: larger - Int(2 * base.reduce(0.0) { Double($0) + $1 }))
+        
+        return (base, additionalWeight, firstLighter)
     }
 }
