@@ -27,9 +27,9 @@ struct ContentView: View {
                 
                 TabView {
                     VStack(spacing: 0) {
-                        SupersetView(exercise1: liftModel.exercises[0] as! WeightedExercise,
-                                     exercise2: liftModel.exercises[1] as! WeightedExercise)
+                        PlatesView(exercise: liftModel.exercises[0] as! WeightedExercise)
                         LiftCard(exercise: $liftModel.exercises[0])
+                        PlatesView(exercise: liftModel.exercises[1] as! WeightedExercise)
                         LiftCard(exercise: $liftModel.exercises[1])
                     }
                     VStack(spacing: 0) {
@@ -47,14 +47,18 @@ struct ContentView: View {
                 .tabViewStyle(PageTabViewStyle())
                 .sheet(isPresented: $showDataPopup) {
                     RecapView()
-                        .accentColor(.orange)
+                        .tint(.orange)
                 }
                 .navigationTitle(date)
-                .navigationBarItems(trailing: Button {
-                    showDataPopup = true
-                } label: {
-                    Image(systemName: "info.circle")
-                })
+                .toolbar {
+                    ToolbarItem(placement: .navigationBarTrailing) {
+                        Button {
+                            showDataPopup = true
+                        } label: {
+                            Image(systemName: "info.circle")
+                        }
+                    }
+                }
             }
         }
     }

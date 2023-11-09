@@ -14,7 +14,7 @@ struct Rise_by_WeApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
-                .accentColor(.orange)
+                .tint(.orange)
                 .environmentObject(liftModel)
         }
     }

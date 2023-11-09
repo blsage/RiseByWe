@@ -36,34 +36,15 @@ class ExerciseModel: ObservableObject {
     }
     
     static var initialExercises: [Exercise] = [
-        WeightedExercise(name: "Bench", weights: [WeightedExercise.Weight(pounds: 55, hit: true),
-                                                  WeightedExercise.Weight(pounds: 60, hit: true),
-                                                  WeightedExercise.Weight(pounds: 65, hit: true),
-                                                  WeightedExercise.Weight(pounds: 70, hit: false),
-                                                  WeightedExercise.Weight(pounds: 70, hit: true),
-                                                  WeightedExercise.Weight(pounds: 75, hit: true),
-                                                  WeightedExercise.Weight(pounds: 80, hit: false)]),
-        WeightedExercise(name: "Shoulder Press", weights: [WeightedExercise.Weight(pounds: 50, hit: true),
-                                                           WeightedExercise.Weight(pounds: 55, hit: true),
-                                                           WeightedExercise.Weight(pounds: 60, hit: false),
-                                                           WeightedExercise.Weight(pounds: 60, hit: false),
-                                                           WeightedExercise.Weight(pounds: 60, hit: false),
-                                                           WeightedExercise.Weight(pounds: 50, hit: false)]),
+        WeightedExercise(name: "Bench", weights: [WeightedExercise.Weight(pounds: 145, hit: false)]),
+        WeightedExercise(name: "Shoulder Press", weights: [WeightedExercise.Weight(pounds: 85, hit: true)]),
         WeightedExercise(name: "Rows", weights: [WeightedExercise.Weight(pounds: 60, hit: true),
                                                  WeightedExercise.Weight(pounds: 65, hit: true),
                                                  WeightedExercise.Weight(pounds: 70, hit: true),
                                                  WeightedExercise.Weight(pounds: 75, hit: false),
                                                  WeightedExercise.Weight(pounds: 75, hit: true)]),
-        BodyweightExercise(name: "Pull-ups", reps: [BodyweightExercise.Reps(reps: [3, 2, 2], hit: true),
-                                                    BodyweightExercise.Reps(reps: [3, 3, 2], hit: false),
-                                                    BodyweightExercise.Reps(reps: [3, 3, 2], hit: false),
-                                                    BodyweightExercise.Reps(reps: [3, 3, 2], hit: true)]),
-        WeightedExercise(name: "Squats", weights: [WeightedExercise.Weight(pounds: 65, hit: true),
-                                                   WeightedExercise.Weight(pounds: 70, hit: true),
-                                                   WeightedExercise.Weight(pounds: 75, hit: true),
-                                                   WeightedExercise.Weight(pounds: 80, hit: true)]),
-        WeightedExercise(name: "Deadlifts", weights: [WeightedExercise.Weight(pounds: 95, hit: true),
-                                                      WeightedExercise.Weight(pounds: 100, hit: true),
-                                                      WeightedExercise.Weight(pounds: 105, hit: true)])
+        BodyweightExercise(name: "Pull-ups", reps: [BodyweightExercise.Reps(reps: [6, 6, 6], hit: true)]),
+        WeightedExercise(name: "Squats", weights: [WeightedExercise.Weight(pounds: 145, hit: true)]),
+        WeightedExercise(name: "Deadlifts", weights: [WeightedExercise.Weight(pounds: 95, hit: true)])
     ]
 }

@@ -9,13 +9,19 @@ import SwiftUI
 
 struct ClockView: View {
     @State var timeElapsed: TimeInterval = 0
+    
     let start = Date()
-    var timer = Timer.publish(every: 0.016666666666667, on: .main, in: .common).autoconnect()
+    let timer = Timer.publish(
+        every: 0.016666666666667,
+        on: .main, in: .common
+    )
+    .autoconnect()
     
     var body: some View {
-        Clock(time: timeElapsed).onReceive(timer) { t in
-            timeElapsed = t.timeIntervalSince(start)
-        }
+        Clock(time: timeElapsed)
+            .onReceive(timer) { t in
+                timeElapsed = t.timeIntervalSince(start)
+            }
     }
 }
 
@@ -25,14 +31,14 @@ struct Clock: View {
     func tick(at tick: Int) -> some View {
         VStack(spacing: 3) {
             Rectangle()
-                .rotation(Angle.degrees(1))
-                .rotation(Angle.degrees(-1))
                 .fill(tick % 10 == 0 ? Color.primary : Color.secondary, style: FillStyle(antialiased: true))
-                .frame(width: 2, height: tick % 2 == 0 ? 15 : 7)
+                .frame(width: 2, height: tick % 5 == 0 ? 15 : 7)
             if tick % 30 == 0 {
                 Text(tick == 0 ? "60" : String(tick/2))
                     .font(.title)
-                    .rotationEffect(-Angle.degrees(Double(tick)/120 * 360))
+                    .rotationEffect(
+                        -Angle.degrees(Double(tick)/120 * 360)
+                    )
             }
             Spacer()
         }
@@ -41,7 +47,7 @@ struct Clock: View {
     
     var body: some View {
         ZStack {
-            ForEach(0..<60*2) { tick in
+            ForEach(0..<120) { tick in
                 self.tick(at: tick)
             }
             Pointer()
